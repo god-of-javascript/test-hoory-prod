@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Test Hoory">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://app.hoory.com">
+  <link rel="dns-prefetch" href="//hoory.com">
+  <link rel="dns-prefetch" href="//amazonaws.com">
+  <title>TEST HOORY</title>
+</head>
+<body style="background: #e3e3e3;">
+<div style="
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    font-size: 21px;
+">
+  Hello, I'm Hoory test website
+  <button onclick="window.location.reload()" style="
+    margin-top: 17px;
+">Reload</button>
+</div>
+
+
+
+<script>
+  window.hoorySettings = {"position":"right","type":"standard","launcherTitle":"Chat with us"};
+  (function(d,t) {
+    var BASE_URL="https://uat.hoory.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.hoorySDK.run({
+        websiteToken: 'VGJzWLsgkGD6SgAWmf8oA5yY',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script>
+    
+
+
+</body>
+</html>
