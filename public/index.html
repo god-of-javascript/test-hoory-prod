@@ -28,7 +28,7 @@
 
 
 
-    <script>
+<!--     <script>
       window.hoorySettings = {"position":"right","type":"standard","launcherTitle":"Chat with us"};
       (function(d,t) {
         var BASE_URL="https://app.hoory.com";
@@ -44,8 +44,46 @@
           })
         }
       })(document,"script");
-    </script>
+    </script> -->
     
+
+
+
+<script>
+  window.hoorySettings = {
+    position: 'right',
+    type: 'standard',
+    launcherTitle: 'Chat with us',
+    autoOpenUnreadConversation: true,
+    lazyLoad: true,
+    avatar: 'https://avatars.githubusercontent.com/u/6254009?v=4',
+  };
+  (function(d, t) {
+    var BASE_URL = 'https://qa-3.hoory.com';
+    var g = d.createElement(t);
+  var s = d.getElementsByTagName(t)[0];
+    g.src = BASE_URL + '/packs/js/sdk.js';
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g, s);
+    g.onload = function() {
+      window.hoorySDK.run({
+        websiteToken: 'BMKamiDur4m3YFedNnh5fDNL',
+        baseUrl: BASE_URL,
+      });
+
+      window.hoorySDK.runSecond({
+        websiteToken: 'bvPQR7f7UQBuS8b3zH6qU7CW',
+        baseUrl: BASE_URL,
+      });
+    };
+  })(document, 'script');
+
+  // window.addEventListener("hoory:error", function (data) {
+  //   console.log("Error loading hoory! :", data);
+  // });
+</script>
+
 
 
 </body>
