@@ -48,7 +48,7 @@
     
 
 
-
+<!-- 
 <script>
   window.hoorySettings = {
     position: 'right',
@@ -82,6 +82,72 @@
   // window.addEventListener("hoory:error", function (data) {
   //   console.log("Error loading hoory! :", data);
   // });
+</script>
+ -->
+
+  <script src="https://app.hoory.com/packs/js/sdk.js" async defer></script>
+<script>
+  let isInit = false;
+  let timeout;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const hooryTrigger = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (window.$hoory2) {
+        window.$hoory2.toggle();
+      }
+    }
+
+    const url = "https://app.hoory.com"
+
+    window.hoorySettings = { lazyLoad: true };
+    const syncHoorySDK = () => {
+      const settings = {
+        websiteToken: "icQUgtPPemEj5UModj4vmnKk",
+        baseUrl: url,
+      }
+
+      const settings2 = {
+        websiteToken: "XTPwMdTFEnQLke4rnvrWQdWq",
+        baseUrl: url,
+        settings: {
+          lazyLoad: true,
+          position: "left",
+          type: "standard",
+          hideMessageBubble: true,
+        }
+      }
+
+      if (!isInit) {
+        window.hoorySDK.run(settings);
+        window.hoorySDK.runSecond(settings2);
+
+        isInit = true;
+      }
+
+
+      const triggers =
+        document.querySelectorAll('[href="https://hoory-script.script"]');
+
+      triggers.forEach(e => e.removeEventListener('click', hooryTrigger));
+      triggers.forEach(e => e.addEventListener('click', hooryTrigger));
+    }
+
+
+    syncHoorySDK();
+
+    const nextMeta = document.querySelector('meta[name="next-head-count"]');
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes") {
+          syncHoorySDK()
+        }
+      });
+    });
+    observer.observe(nextMeta, {attributes: true});
+  })
 </script>
 
 
